@@ -136,6 +136,6 @@
 
 ## 5. Summary
 
-- **Correctness**: i ensured by validating transformations and query results against expected outcomes.
+- **Correctness**: i ensured validating transformations and query results against expected outcomes.
 - **Efficiency**: i optimized queries where applicable to enhance performance and readability.
 - **Clarity**: i documented each step and decision to ensure transparency and understanding.
