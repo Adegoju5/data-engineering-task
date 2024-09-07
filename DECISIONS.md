@@ -88,7 +88,7 @@
     LIMIT 5;
 
 
-###### The query using ORDER BY with LIMIT is more optimized because it directly utilizes Snowflake’s Top-N sorting capabilities, minimizing the computational overhead by only sorting enough rows to retrieve the top 5 results. In contrast, using the ROW_NUMBER() approach involves additional steps of ranking all rows before filtering, leading to unnecessary processing and complexity. This makes the ORDER BY with LIMIT approach more efficient for retrieving a limited number of top results. 
+##### The query using ORDER BY with LIMIT is more optimized because it directly utilizes Snowflake’s Top-N sorting capabilities, minimizing the computational overhead by only sorting enough rows to retrieve the top 5 results. In contrast, using the ROW_NUMBER() approach involves additional steps of ranking all rows before filtering, leading to unnecessary processing and complexity. This makes the ORDER BY with LIMIT approach more efficient for retrieving a limited number of top results. 
 
 ## 4.2. Top 5 Customers by Total Sales Amount in 2023
 
