@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: transformed_sales_data
+    description: "Transformed sales data"
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+
+

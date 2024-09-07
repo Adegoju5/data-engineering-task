@@ -1,0 +1,20 @@
+version: 2
+
+seeds:
+  - name: sales
+    description: "Sales data"
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+      - name: total_sales_amount
+        
+
+  - name: customers
+    description: "Customer data"
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
