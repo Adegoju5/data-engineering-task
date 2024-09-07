@@ -71,7 +71,7 @@
 
 ## 3.2. Data Transformation and Optimization process for Targeted Analysis
 
-- The provided SQL code transforms order_date into a DATE type and extracts year, month, and day components for better date handling. It calculates total_sales_amount by multiplying quantity and price. By adding the `WHERE year = 2023` filter, the query optimizes performance by focusing on the relevant data from 2023, reducing the dataset size and improving query efficiency. This logical partitioning allows for faster data retrieval and processing, since the analysis the sales team came up with are (2023) year-specific analysis.
+- The provided SQL code transforms order_date into a DATE type and extracts year, month, and day components for better date handling. It calculates total_sales_amount by multiplying quantity and price. By adding the `WHERE year = 2023` filter, the query optimizes performance by focusing on the relevant data from 2023, reducing the dataset size and improving query efficiency. This logical partitioning allows for faster data retrieval and processing, since the analysis the sales team came up with are (2023) year-specific analysis, we do not need irrelevant rows (non - 2023 year) in our `transformed_sales_data` .
 
 ## 4. Data Analysis Queries
 
@@ -133,10 +133,6 @@
   LIMIT 1;
 
 ##### The above query is quite optimized because it directly retrieves the top customer by order count using ORDER BY and LIMIT, leveraging Snowflake’s Top-N optimization to efficiently sort and limit the result set
-
-## Rationale
-
-`ROW_NUMBER()` provides a ranking of customers by order count, allowing us to efficiently retrieve the customer with the highest order volume.
 
 ## 5. Summary
 
