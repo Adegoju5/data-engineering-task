@@ -77,28 +77,30 @@ This project is a solution for analyzing sales data using dbt and Snowflake. It 
 
 ### 7. **Run Queries**
 
+##### Note: To run the queries, open the SQL worksheet on your snowflake dashboard, select `home_assignment` database and `public`schema you created earlier.
+
 - **Top 5 Products by Total Sales Amount in 2023**
 
     ```sql
-    SELECT * FROM queries/top_5_products_2023.sql;
+    queries/top_5_products_2023.sql;
     ```
 
 - **Top 5 Customers by Total Sales Amount in 2023**
 
     ```sql
-    SELECT * FROM queries/top_5_customers_2023.sql;
+    queries/top_5_customers_2023.sql;
     ```
 
 - **Average Order Value for Each Month in 2023**
 
     ```sql
-    SELECT * FROM queries/average_order_value_monthly_2023.sql;
+    queries/average_order_value_monthly_2023.sql;
     ```
 
 - **Customer with Highest Order Volume in October 2023**
 
     ```sql
-    SELECT * FROM queries/top_customer_october_2023.sql;
+    queries/top_customer_october_2023.sql;
     ```
 
 ### 8. **Generate Documentation**
