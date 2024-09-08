@@ -49,7 +49,7 @@ This project is a solution for analyzing sales data using dbt and Snowflake. It 
 
     ```bash
     git clone https://github.com/Adegoju5/data-engineering-task.git
-    cd data-engineering-home-assignment
+    cd data-engineering-task
     ```
 
 2. Install dbt dependencies:
