@@ -9,7 +9,13 @@ WITH sales AS (
     FROM {{ ref('sales') }}
 )
 
-SELECT *
+SELECT
+    order_id,
+    customer_id,
+    product_name,
+    year,
+    month,
+    total_sales_amount
 FROM sales
 WHERE year = 2023
 

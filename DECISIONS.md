@@ -65,13 +65,19 @@
     FROM {{ ref('sales') }}
     )
 
-    SELECT *
-    FROM sales
-    WHERE year = 2023
+  SELECT
+      order_id,
+      customer_id,
+      product_name,
+      year,
+      month,
+      total_sales_amount
+  FROM sales
+  WHERE year = 2023  
 
 ## 3.2. Data Transformation and Optimization process for Targeted Analysis
 
-- The provided SQL code transforms order_date into a DATE type and extracts year, month, and day components for better date handling. It calculates total_sales_amount by multiplying quantity and price. By adding the `WHERE year = 2023` filter, the query optimizes performance by focusing on the relevant data from 2023, reducing the dataset size and improving query efficiency. This logical partitioning allows for faster data retrieval and processing, since the analysis the sales team came up with are (2023) year-specific analysis, we do not need irrelevant rows (non - 2023 year) in our `transformed_sales_data` .
+- The provided SQL code transforms order_date into a DATE type and extracts year, month, and day components for better date handling. It calculates total_sales_amount by multiplying quantity and price. By adding the `WHERE year = 2023` filter, the query optimizes performance by focusing on the relevant data from 2023, reducing the dataset size and improving query efficiency. This logical partitioning allows for faster data retrieval and processing, since the analysis the sales team came up with are (2023) year-specific analysis, we do not need irrelevant rows (non - 2023 year) in our `transformed_sales_data` . Additionally, several columns were dropped from the final table as they were not required for the analysis. This columnar optimization further reduces the data size and improves the performance of queries, ensuring a more efficient data warehouse setup.
 
 ## 4. Data Analysis Queries
 
@@ -95,11 +101,11 @@
 - **Query**:
   ```sql
   SELECT
-      c.customer_name,
-      SUM(t.total_sales_amount) AS total_sales
+    c.name,
+    SUM(t.total_sales_amount) AS total_sales
   FROM transformed_sales_data t
-  JOIN raw_customer_data c ON t.customer_id = c.customer_id
-  GROUP BY c.customer_name
+  JOIN customers c ON t.customer_id = c.id
+  GROUP BY c.name
   ORDER BY total_sales DESC
   LIMIT 5;
 
@@ -111,7 +117,7 @@
   ```sql
   SELECT
       month,
-      AVG(total_sales_amount) AS average_order_value
+      ROUND(AVG(total_sales_amount), 2) AS average_order_value
   FROM transformed_sales_data
   GROUP BY month
   ORDER BY month;
@@ -123,12 +129,12 @@
 - **Query**:
   ```sql
   SELECT
-      c.customer_name,
-      COUNT(t.order_id) AS order_count
+    c.name,
+    COUNT(t.order_id) AS order_count
   FROM transformed_sales_data t
-  JOIN raw_customer_data c ON t.customer_id = c.customer_id
+  JOIN customers c ON t.customer_id = c.id
   WHERE t.month = 10
-  GROUP BY c.customer_name
+  GROUP BY c.name
   ORDER BY order_count DESC
   LIMIT 1;
 
